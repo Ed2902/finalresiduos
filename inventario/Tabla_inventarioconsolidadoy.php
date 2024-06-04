@@ -63,57 +63,26 @@
         </div>
 
         <div class="table-responsive">
-        <table id="tablaInventario" class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>ID Producto</th>
-                    <th>Nombre Producto</th>
-                    <th>Referencia</th>
-                    <th>Tipo</th>
-                    <th>Total Cantidad En kilos</th>
-                    <th>Total Valor Pagado</th>
-                    <th>Detalles</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $inventario = new Inventario(null, null, null, null, null);
-                $productos = $inventario->mostrarConsolidadoProductos();
-
-                foreach ($productos as $producto) {
-                    echo "<tr>";
-                    echo "<td>" . $producto['id_producto'] . "</td>";
-                    echo "<td>" . $producto['nombre'] . "</td>";
-                    echo "<td>" . $producto['referencia'] . "</td>";
-                    echo "<td>" . $producto['tipo'] . "</td>";
-                    echo "<td>" . number_format($producto['total_cantidad'], 2, ',', '.') . "</td>";
-                    echo "<td>$" . number_format($producto['total_valor'], 2, ',', '.') . "</td>";
-                    echo "<td><button type='button' class='btn btn-primary btn-sm' data-toggle='modal' data-target='#detallesModal' data-detalles='" . htmlspecialchars(json_encode($producto)) . "'>Detalles</button></td>";
-                    echo "</tr>";
-                }
-            ?>
-</tbody>
-        </table>
-    </div>
+            <table id="tablaInventario" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID Producto</th>
+                        <th>Nombre Producto</th>
+                        <th>Referencia</th>
+                        <th>Tipo</th>
+                        <th>Total Cantidad en kilos</th>
+                        <th>Total Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $inventario->mostrarConsolidadoProductos(); ?>
+                </tbody>
+            </table>
+        </div>
         <!-- Botón de Agregar -->
         <a href="../formularios/ingresar_inventario.php" class="btn btn-success mt-3"><i class="fas fa-plus"></i> Agregar</a>
     </div>
-    <div class="modal fade" id="detallesModal" tabindex="-1" role="dialog" aria-labelledby="detallesModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="detallesModalLabel">Detalles de Ingreso</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Aquí se mostrarán los detalles de ingreso -->
-                    <div id="detallesIngreso"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!-- Agregar scripts de DataTables y Bootstrap al final del cuerpo del documento -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
@@ -133,30 +102,6 @@
             $('#filtroFecha').on('keyup change', function() {
                 var fecha = $('#filtroFecha').val();
                 $('#tablaInventario').DataTable().column(1).search(fecha).draw();
-            });
-
-            // Mostrar los detalles de ingreso en el modal
-            $('#detallesModal').on('show.bs.modal', function(event) {
-                var button = $(event.relatedTarget);
-                var detalles = button.data('detalles');
-                var detallesIngreso = JSON.parse(detalles);
-
-                var html = '<table class="table table-striped table-bordered mt-3">';
-                html += '<thead><tr><th>ID Ingreso</th><th>Fecha Hora</th><th>Usuario</th><th>Proveedor</th></tr></thead>';
-                html += '<tbody>';
-
-                detallesIngreso.forEach(function(detalle) {
-                    html += '<tr>';
-                    html += '<td>' + detalle.id_ingreso + '</td>';
-                    html += '<td>' + detalle.fecha_hora + '</td>';
-                    html += '<td>' + detalle.usuario + '</td>';
-                    html += '<td>' + detalle.proveedor + '</td>';
-                    html += '</tr>';
-                });
-
-                html += '</tbody></table>';
-
-                $(this).find('#detallesIngreso').html(html);
             });
         });
     </script>

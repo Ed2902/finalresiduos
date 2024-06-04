@@ -96,7 +96,6 @@ class Inventario {
         }
     }
 
-    
     public function mostrarConsolidadoProductos() {
         $conexion = new Conexion();
         $consulta = $conexion->query("SELECT p.id_producto, p.nombre AS nombre, p.referencia, p.tipo, 
@@ -105,38 +104,25 @@ class Inventario {
                                       FROM inventario inv
                                       INNER JOIN producto p ON inv.id_productoFK = p.id_producto
                                       GROUP BY p.id_producto");
-        
-        $productos = array();
+    
         if ($consulta->rowCount() > 0) {
             while ($fila = $consulta->fetch(PDO::FETCH_ASSOC)) {
-                $productos[] = $fila;
+                echo "<tr>";
+                echo "<td>".$fila['id_producto']."</td>";
+                echo "<td>".$fila['nombre']."</td>";
+                echo "<td>".$fila['referencia']."</td>";
+                echo "<td>".$fila['tipo']."</td>";
+                echo "<td>" . number_format($fila['total_cantidad'], 2, ',', '.') . "</td>";
+                echo "<td>$" . number_format($fila['total_valor'], 2, ',', '.') . "</td>";
+                echo "</tr>";
             }
-        }
-        
-        return $productos;
-    }
-    
-    public function mostrarDetallesIngreso($id_productoFK) {
-        $conexion = new Conexion();
-        $consulta = $conexion->prepare("SELECT i.id_ingreso, i.fecha_hora, u.nombre AS usuario, p.nombre AS proveedor
-                                        FROM ingreso i
-                                        INNER JOIN detalle_ingreso di ON i.id_ingreso = di.ingreso_id
-                                        INNER JOIN inventario inv ON di.id_inventarioFK = inv.id_inventario
-                                        INNER JOIN usuario u ON inv.id_usuario = u.id_usuario
-                                        INNER JOIN proveedor p ON inv.id_proveedor = p.id_proveedor
-                                        WHERE inv.id_productoFK = :idProducto");
-        $consulta->bindParam(':id_productoFK', $id_productoFK);
-        $consulta->execute();
-    
-        $detalles = array();
-        if ($consulta->rowCount() > 0) {
-            while ($fila = $consulta->fetch(PDO::FETCH_ASSOC)) {
-                $detalles[] = $fila;
-            }
+        } else {
+            echo "<tr><td colspan='6'>No se encontraron datos de inventario.</td></tr>";
         }
     
-        return json_encode($detalles); // Devolver los detalles en formato JSON
+        $conexion = null;
     }
+    
     
 }
 ?>
