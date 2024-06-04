@@ -54,6 +54,26 @@ class Ingreso {
             return false; // Error
         }
     }
+
+    public static function obtenerTodosLosIngresos() {
+        $conexion = new Conexion();
+        $consulta = $conexion->query("SELECT * FROM ingreso ORDER BY fecha_hora DESC");
+        $ingresos = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        return $ingresos;
+    }
+
+    public static function obtenerDetallesDeIngreso($idIngreso) {
+        $conexion = new Conexion();
+        $consulta = $conexion->prepare("SELECT p.nombre, p.referencia, p.tipo, d.cantidad
+                                        FROM detalle_ingreso d
+                                        INNER JOIN producto p ON d.id_productoFK = p.id_producto
+                                        WHERE d.ingreso_id = :idIngreso");
+        $consulta->bindParam(':idIngreso', $idIngreso);
+        $consulta->execute();
+        $detallesIngreso = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        return $detallesIngreso;
+    }
 }
+
 
 ?>

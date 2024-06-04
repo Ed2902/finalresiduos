@@ -94,6 +94,27 @@
             </div>
         </div>
     </div>
+    <script>
+        document.getElementById('id_productoFK').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                var idProducto = document.getElementById('id_productoFK').value;
+                fetch('./obtener_producto.php?id=' + idProducto)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            document.getElementById('nombre').value = data.producto.nombre;
+                            document.getElementById('referencia').value = data.producto.referencia;
+                            document.getElementById('tipo').value = data.producto.tipo;
+                        } else {
+                            alert('No se encontró el producto con el ID proporcionado.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="./teste.js"></script>

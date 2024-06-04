@@ -95,6 +95,34 @@ class Inventario {
             return false; // Error
         }
     }
-}
 
+    public function mostrarConsolidadoProductos() {
+        $conexion = new Conexion();
+        $consulta = $conexion->query("SELECT p.id_producto, p.nombre AS nombre, p.referencia, p.tipo, 
+                                            SUM(inv.peso) AS total_cantidad,
+                                            SUM(inv.valorPorKilo) AS total_valor
+                                      FROM inventario inv
+                                      INNER JOIN producto p ON inv.id_productoFK = p.id_producto
+                                      GROUP BY p.id_producto");
+    
+        if ($consulta->rowCount() > 0) {
+            while ($fila = $consulta->fetch(PDO::FETCH_ASSOC)) {
+                echo "<tr>";
+                echo "<td>".$fila['id_producto']."</td>";
+                echo "<td>".$fila['nombre']."</td>";
+                echo "<td>".$fila['referencia']."</td>";
+                echo "<td>".$fila['tipo']."</td>";
+                echo "<td>" . number_format($fila['total_cantidad'], 2, ',', '.') . "</td>";
+                echo "<td>$" . number_format($fila['total_valor'], 2, ',', '.') . "</td>";
+                echo "</tr>";
+            }
+        } else {
+            echo "<tr><td colspan='6'>No se encontraron datos de inventario.</td></tr>";
+        }
+    
+        $conexion = null;
+    }
+    
+    
+}
 ?>

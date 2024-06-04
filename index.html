@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orange Sphere Animation</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<style>
+
+ body {
+    background-image: url('./img/Fondofastway.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #555555;
+    font-family: sans-serif;
+    margin: 0;
+    overflow: hidden;
+    transition: background-color 0.5s ease; /* Agrega una transición para cambiar el color de fondo */
+  }
+
+  .boton-contenedor{
+    position: relative;
+  }
+
+  #btnIngresar {
+    display: none; /* Esto oculta el botón */
+    width: 8%;
+    margin-left: 44%;
+    text-align: center;
+  }
+
+  body {
+    background-image:url('./img/Fondofastway.jpg');
+    color:#555555;
+    font-family: sans-serif;
+    margin: 0;
+    overflow: hidden;
+  }
+    
+  h4 {
+    font-size: 16px;
+  }
+  
+  p {
+    font-size: 14px;
+    color: #888888;
+  }
+  
+  a {
+    color: #d15423;
+    text-decoration: none;
+  }
+  
+  .slider {
+    display: block;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0);
+    width: 80%; /* Ajustado para ocupar el 80% del ancho del contenedor */
+    max-width: 900px;
+    height: auto;
+  }
+  
+  canvas {
+    display: block;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    max-width: 900px; /* Ajuste máximo para dispositivos grandes */
+    height: auto;
+  }
+
+  #image {
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 16%; /* La imagen se ajustará al ancho del viewport */
+    height: auto; /* El alto se ajustará automáticamente */
+  }
+
+  @media (min-width: 200px) and (max-width: 800px){
+
+  body {
+    background-image: url('./img/Fondofastway2.jpg');
+    background-position-y:top;
+    margin-bottom:100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+  }
+
+  #image {
+    max-width: 50%;
+    top: 18%;
+    margin-top: 40%;
+  }
+
+  .slider {
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  canvas {
+    
+    margin-top: 50%;
+    max-height: 90%;
+  }
+
+  #btnIngresar {
+    display: none;
+    width:14%;
+    margin-left:35%;
+    text-align: center;
+    }
+}
+
+@media (min-width: 800px) and (max-width: 1024px) {
+
+  body {
+    background-image: url('./img/Fondofastway2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #555555;
+    font-family: sans-serif;
+    margin: 0;
+    overflow: hidden;
+    transition: background-color 0.5s ease; /* Agrega una transición para cambiar el color de fondo */
+  }
+
+  #image {
+    max-width: 30%;
+    top: 25%;
+  }
+
+  .slider {
+    width: 70%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  canvas {
+    margin-top: 5%;
+    max-height: 60%;
+  }
+
+  .boton-contenedor{
+    position: relative;
+    margin-bottom: auto;
+  }
+
+  #btnIngresar {
+    display: none; /* Esto oculta el botón */
+    width: 8%;
+    margin-left: 45%;
+    text-align: center;
+  }
+
+}
+
+
+
+/* Estilos y efectos del botón */
+.bubbly-button {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  display: inline-block;
+  font-size: 1em;
+  padding: 1em 2em;
+  margin-top: 20px;
+  background-color: #6c99fa; /* Fucsia */
+  color: #f65b13d2;
+  border-radius: 4px;
+  border: 0.5px solid black;
+  cursor: pointer;
+  position: relative;
+  transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+  box-shadow: 0 2px 25px rgba(25, 57, 240, 0.5);
+}
+
+.bubbly-button:focus {
+  outline: 0;
+}
+
+.bubbly-button:active {
+  transform: scale(0.9);
+  background-color: #f65b13d2; /* Naranja */
+  box-shadow: 0 2px 25px rgba(212, 84, 150, 0.2);
+  color: #000000;
+}
+
+.bubbly-button.animate:before, .bubbly-button.animate:after {
+  display: block;
+  animation-duration: 0.75s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.bubbly-button.animate:before {
+  animation-name: topBubbles;
+}
+
+.bubbly-button.animate:after {
+  animation-name: bottomBubbles;
+}
+
+</style>
+</head>
+<body>
+    <img id="image" src="./img/OIP-M4oKO7TNV-transformed-PhotoRoom.png-PhotoRoom.png">
+    <div style="text-align:center">
+      <div class="slider" id="slider-range"></div>
+      <div class="slider" id="slider-test"></div>
+      <canvas id="canvasOne" width="900" height="520"></canvas>
+      <div class="boton-contenedor">
+        <a id="btnIngresar" class="bubbly-button" href="#">Ingresar</a>
+      </div>
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+
+<script>
+  
+   window.addEventListener("load", function() {
+    setTimeout(function() {
+        document.getElementById('btnIngresar').style.display = 'block'; // Cambia 'block' por 'inline-block' si es necesario
+    }, 2000); // 5000 milisegundos = 5 segundos
+});
+
+var screenWidth = window.innerWidth;
+    
+    
+
+  window.addEventListener("load", windowLoadHandler, false);
+
+
+  var sphereRad = 280;
+  var radius_sp = 1;
+
+
+  function windowLoadHandler() {
+    canvasApp();
+  }
+
+  function canvasApp() {
+    var theCanvas = document.getElementById("canvasOne");
+    var context = theCanvas.getContext("2d");
+
+    var displayWidth;
+    var displayHeight;
+    var timer;
+    var wait;
+    var count;
+    var numToAddEachFrame;
+    var particleList;
+    var recycleBin;
+    var particleAlpha;
+    var r, g, b;
+    var fLen;
+    var m;
+    var projCenterX;
+    var projCenterY;
+    var zMax;
+    var turnAngle;
+    var turnSpeed;
+    var sphereCenterX, sphereCenterY, sphereCenterZ;
+    var particleRad;
+    var zeroAlphaDepth;
+    var randAccelX, randAccelY, randAccelZ;
+    var gravity;
+    var rgbString;
+    var p;
+    var outsideTest;
+    var nextParticle;
+    var sinAngle;
+    var cosAngle;
+    var rotX, rotZ;
+    var depthAlphaFactor;
+    var i;
+    var theta, phi;
+    var x0, y0, z0;
+
+    init();
+
+    function init() {
+      wait = 1;
+      count = wait - 1;
+      numToAddEachFrame = 8;
+
+      r = 255; // Orange color
+      g = 165;
+      b = 0;
+
+      rgbString = "rgba(" + r + "," + g + "," + b + ",";
+      particleAlpha = 1;
+
+      displayWidth = theCanvas.width;
+      displayHeight = theCanvas.height;
+
+      fLen = 320;
+
+      projCenterX = displayWidth / 2;
+      projCenterY = displayHeight / 2;
+
+      zMax = fLen - 2;
+
+      particleList = {};
+      recycleBin = {};
+
+      randAccelX = 0.1;
+      randAccelY = 0.1;
+      randAccelZ = 0.1;
+
+      gravity = -0;
+
+      particleRad = 2.5;
+
+      sphereCenterX = 0;
+      sphereCenterY = 0;
+      sphereCenterZ = -3 - sphereRad;
+
+      zeroAlphaDepth = -750;
+
+      turnSpeed = 2 * Math.PI / 1200;
+      turnAngle = 0;
+
+      timer = setInterval(onTimer, 10 / 24);
+    }
+
+    function onTimer() {
+      count++;
+      if (count >= wait) {
+        count = 0;
+        for (i = 0; i < numToAddEachFrame; i++) {
+          theta = Math.random() * 2 * Math.PI;
+          phi = Math.acos(Math.random() * 2 - 1);
+          x0 = sphereRad * Math.sin(phi) * Math.cos(theta);
+          y0 = sphereRad * Math.sin(phi) * Math.sin(theta);
+          z0 = sphereRad * Math.cos(phi);
+
+          var p = addParticle(x0, sphereCenterY + y0, sphereCenterZ + z0, 0.002 * x0, 0.002 * y0, 0.002 * z0);
+
+          p.attack = 50;
+          p.hold = 50;
+          p.decay = 100;
+          p.initValue = 0;
+          p.holdValue = particleAlpha;
+          p.lastValue = 0;
+
+          p.stuckTime = 90 + Math.random() * 20;
+
+          p.accelX = 0;
+          p.accelY = gravity;
+          p.accelZ = 0;
+        }
+      }
+
+      turnAngle = (turnAngle + turnSpeed) % (2 * Math.PI);
+      sinAngle = Math.sin(turnAngle);
+      cosAngle = Math.cos(turnAngle);
+
+      context.clearRect(0, 0, displayWidth, displayHeight); 
+      p = particleList.first;
+      while (p != null) {
+        nextParticle = p.next;
+
+        p.age++;
+
+        if (p.age > p.stuckTime) {
+          p.velX += p.accelX + randAccelX * (Math.random() * 2 - 1);
+          p.velY += p.accelY + randAccelY * (Math.random() * 2 - 1);
+          p.velZ += p.accelZ + randAccelZ * (Math.random() * 2 - 1);
+
+          p.x += p.velX;
+          p.y += p.velY;
+          p.z += p.velZ;
+        }
+
+        rotX = cosAngle * p.x + sinAngle * (p.z - sphereCenterZ);
+        rotZ = -sinAngle * p.x + cosAngle * (p.z - sphereCenterZ) + sphereCenterZ;
+        m = radius_sp * fLen / (fLen - rotZ);
+        p.projX = rotX * m + projCenterX;
+        p.projY = p.y * m + projCenterY;
+
+        if (p.age < p.attack + p.hold + p.decay) {
+          if (p.age < p.attack) {
+            p.alpha = (p.holdValue - p.initValue) / p.attack * p.age + p.initValue;
+          }
+          else if (p.age < p.attack + p.hold) {
+            p.alpha = p.holdValue;
+          }
+          else if (p.age < p.attack + p.hold + p.decay) {
+            p.alpha = (p.lastValue - p.holdValue) / p.decay * (p.age - p.attack - p.hold) + p.holdValue;
+          }
+        }
+        else {
+          p.dead = true;
+        }
+
+        if ((p.projX > displayWidth) || (p.projX < 0) || (p.projY < 0) || (p.projY > displayHeight) || (rotZ > zMax)) {
+          outsideTest = true;
+        }
+        else {
+          outsideTest = false;
+        }
+
+        if (outsideTest || p.dead) {
+          recycle(p);
+        }
+        else {
+          depthAlphaFactor = (1 - rotZ / zeroAlphaDepth);
+          depthAlphaFactor = (depthAlphaFactor > 1) ? 1 : ((depthAlphaFactor < 0) ? 0 : depthAlphaFactor);
+          context.fillStyle = rgbString + depthAlphaFactor * p.alpha + ")";
+
+          context.beginPath();
+          context.arc(p.projX, p.projY, m * particleRad, 0, 2 * Math.PI, false);
+          context.closePath();
+          context.fill();
+        }
+
+        p = nextParticle;
+      }
+    }
+
+    function addParticle(x0, y0, z0, vx0, vy0, vz0) {
+      var newParticle;
+      var color;
+
+      if (recycleBin.first != null) {
+        newParticle = recycleBin.first;
+        if (newParticle.next != null) {
+          recycleBin.first = newParticle.next;
+          newParticle.next.prev = null;
+        }
+        else {
+          recycleBin.first = null;
+        }
+      }
+      else {
+        newParticle = {};
+      }
+
+      if (particleList.first == null) {
+        particleList.first = newParticle;
+        newParticle.prev = null;
+        newParticle.next = null;
+      }
+      else {
+        newParticle.next = particleList.first;
+        particleList.first.prev = newParticle;
+        particleList.first = newParticle;
+        newParticle.prev = null;
+      }
+
+      newParticle.x = x0;
+      newParticle.y = y0;
+      newParticle.z = z0;
+      newParticle.velX = vx0;
+      newParticle.velY = vy0;
+      newParticle.velZ = vz0;
+      newParticle.age = 0;
+      newParticle.dead = false;
+      if (Math.random() < 0.5) {
+        newParticle.right = true;
+      }
+      else {
+        newParticle.right = false;
+      }
+      return newParticle;
+    }
+
+    function recycle(p) {
+      if (particleList.first == p) {
+        if (p.next != null) {
+          p.next.prev = null;
+          particleList.first = p.next;
+        }
+        else {
+          particleList.first = null;
+        }
+      }
+      else {
+        if (p.next == null) {
+          p.prev.next = null;
+        }
+        else {
+          p.prev.next = p.next;
+          p.next.prev = p.prev;
+        }
+      }
+      if (recycleBin.first == null) {
+        recycleBin.first = p;
+        p.prev = null;
+        p.next = null;
+      }
+      else {
+        p.next = recycleBin.first;
+        recycleBin.first.prev = p;
+        recycleBin.first = p;
+        p.prev = null;
+      }
+    }
+
+    $(function() {
+      $("#slider-range").slider({
+        range: false,
+        min: 20,
+        max: 500,
+        value: 280,
+        slide: function(event, ui) {
+          console.log(ui.value);
+          sphereRad = ui.value;
+        }
+      });
+    });
+
+    $(function() {
+      $("#slider-test").slider({
+        range: false,
+        min: 1.0,
+        max: 2.0,
+        value: 1,
+        step: 0.01,
+        slide: function(event, ui) {
+          radius_sp = ui.value;
+        }
+      });
+    });
+
+    // Agrega la animación al botón "Ingresar"
+    $("#btnIngresar").on("click", function(e) {
+      e.preventDefault();
+      $(this).addClass("animate__animated animate__bounceOutLeft");
+      setTimeout(function() {
+        window.location.href = "./Home/home.html"; // Cambia la URL a donde quieres redirigir
+      }, 500); // 1000 milisegundos = 1 segundo (tiempo de duración de la animación)
+    });
+  }
+  
+</script>
+</body>
+</html>
