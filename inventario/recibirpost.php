@@ -36,9 +36,6 @@ foreach ($inventarioData as $filaDatos) {
     // Crear un objeto Inventario con los datos de la fila
     $inventario = new Inventario(
         $filaDatos['id_productoFK'],
-        $filaDatos['nombre'],
-        $filaDatos['referencia'],
-        $filaDatos['tipo'],
         $filaDatos['id_usuarioFK'], // Ajustar para incluir el ID de usuario
         $filaDatos['peso'],
         $filaDatos['id_proveedorFK'],

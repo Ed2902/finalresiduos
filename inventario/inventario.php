@@ -5,19 +5,13 @@ require_once("./ingreso.php");
 
 class Inventario {
     protected $id_productoFK;
-    protected $nombre;
-    protected $referencia;
-    protected $tipo;
     protected $id_usuarioFK;
     protected $peso;
     protected $id_proveedorFK;
     protected $valorPorKilo;
 
-    public function __construct($id_productoFK, $nombre, $referencia, $tipo, $id_usuarioFK, $peso, $id_proveedorFK, $valorPorKilo) {
+    public function __construct($id_productoFK, $id_usuarioFK, $peso, $id_proveedorFK, $valorPorKilo) {
         $this->id_productoFK = $id_productoFK;
-        $this->nombre = $nombre;
-        $this->referencia = $referencia;
-        $this->tipo = $tipo;
         $this->id_usuarioFK = $id_usuarioFK;
         $this->peso = $peso;
         $this->id_proveedorFK = $id_proveedorFK;
@@ -27,18 +21,6 @@ class Inventario {
     // Getters y setters
     public function getIdProductoFK() {
         return $this->id_productoFK;
-    }
-
-    public function getNombre() {
-        return $this->nombre;
-    }
-
-    public function getReferencia() {
-        return $this->referencia;
-    }
-
-    public function getTipo() {
-        return $this->tipo;
     }
 
     public function getIdUsuarioFK() {
@@ -59,18 +41,6 @@ class Inventario {
 
     public function setIdProductoFK($id_productoFK) {
         $this->id_productoFK = $id_productoFK;
-    }
-
-    public function setNombre($nombre) {
-        $this->nombre = $nombre;
-    }
-
-    public function setReferencia($referencia) {
-        $this->referencia = $referencia;
-    }
-
-    public function setTipo($tipo) {
-        $this->tipo = $tipo;
     }
 
     public function setIdUsuarioFK($id_usuarioFK) {
@@ -96,11 +66,8 @@ class Inventario {
             $conexion->beginTransaction();
 
             // Insertar en la tabla 'inventario'
-            $consultaInventario = $conexion->prepare("INSERT INTO inventario (id_productoFK, nombre, referencia, tipo, id_usuario, peso, id_proveedor, valorPorKilo) VALUES (:id_productoFK, :nombre, :referencia, :tipo, :id_usuario, :peso, :id_proveedor, :valorPorKilo)");
+            $consultaInventario = $conexion->prepare("INSERT INTO inventario (id_productoFK, id_usuario, peso, id_proveedor, valorPorKilo) VALUES (:id_productoFK, :id_usuario, :peso, :id_proveedor, :valorPorKilo)");
             $consultaInventario->bindParam(':id_productoFK', $this->id_productoFK);
-            $consultaInventario->bindParam(':nombre', $this->nombre);
-            $consultaInventario->bindParam(':referencia', $this->referencia);
-            $consultaInventario->bindParam(':tipo', $this->tipo);
             $consultaInventario->bindParam(':id_usuario', $this->id_usuarioFK);
             $consultaInventario->bindParam(':peso', $this->peso);
             $consultaInventario->bindParam(':id_proveedor', $this->id_proveedorFK);

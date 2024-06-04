@@ -91,8 +91,25 @@ function cantidad(index) {
     }
 }
 
+function prepararDatosParaEnvio(data) {
+    return data.map(function(producto) {
+        // Crear un nuevo objeto sin los campos 'nombre', 'referencia' y 'tipo'
+        var productoModificado = {
+            "cant": producto.cant,
+            "id_productoFK": producto.id_productoFK,
+            "id_usuarioFK": producto.id_usuarioFK,
+            "peso": producto.peso,
+            "id_proveedorFK": producto.id_proveedorFK,
+            "valorPorKilo": producto.valorPorKilo,
+        };
+        return productoModificado;
+    });
+}
+
+
 // Función para enviar los datos al servidor
 function save() {
+    var dataToSend = prepararDatosParaEnvio(data);
     var json = JSON.stringify(data);  // Convertir array de datos a formato JSON
     console.log("JSON a enviar:", json); 
 
