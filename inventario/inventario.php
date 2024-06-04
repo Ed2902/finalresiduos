@@ -113,7 +113,7 @@ class Inventario {
                 echo "<td>".$fila['referencia']."</td>";
                 echo "<td>".$fila['tipo']."</td>";
                 echo "<td>" . number_format($fila['total_cantidad'], 2, ',', '.') . "</td>";
-                echo "<td>$" . number_format($fila['total_valor'], 2, ',', '.') . "</td>";
+                echo "<td>$" . number_format($fila['total_valor'], 0, ',', '.') . "</td>";
                 echo "</tr>";
             }
         } else {
@@ -123,6 +123,23 @@ class Inventario {
         $conexion = null;
     }
     
+    public function calcularTotalesProductos() {
+        $conexion = new Conexion();
+        $consulta = $conexion->query("SELECT SUM(inv.peso) AS total_cantidad,
+                                            SUM(inv.valorPorKilo) AS total_valor
+                                      FROM inventario inv
+                                      INNER JOIN producto p ON inv.id_productoFK = p.id_producto");
+        
+        $totales = $consulta->fetch(PDO::FETCH_ASSOC);
+        $conexion = null;
+    
+        // Si se encontraron resultados, devolver los totales calculados
+        if ($totales) {
+            return $totales;
+        } else {
+            return ['total_cantidad' => 0, 'total_valor' => 0];
+        }
+    }
     
 }
 ?>

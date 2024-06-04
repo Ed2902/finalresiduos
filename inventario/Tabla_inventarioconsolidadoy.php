@@ -1,7 +1,13 @@
 <?php
-    // Crear instancia de la clase Inventario
+    // Incluir el archivo que contiene la definición de la clase Inventario
     require_once("./inventario.php");
+
+    // Crear una instancia de la clase Inventario
     $inventario = new Inventario(null, null, null, null, null);
+
+    // Calcular los totales de cantidad en kilos y valor
+    $totales = $inventario->calcularTotalesProductos();
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -77,10 +83,17 @@
                 <tbody>
                     <?php $inventario->mostrarConsolidadoProductos(); ?>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">Totales</td>
+                        <td><?php echo number_format($totales['total_cantidad'], 2, ',', '.'); ?></td>
+                        <td><?php echo '$' . number_format($totales['total_valor'], 0, ',', '.'); ?></td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
         <!-- Botón de Agregar -->
-        <a href="../formularios/ingresar_inventario.php" class="btn btn-success mt-3"><i class="fas fa-plus"></i> Agregar</a>
+        <a href="./ingresar_inventario.php" class="btn btn-success mt-3"><i class="fas fa-plus"></i> Agregar</a>
     </div>
 
     <!-- Agregar scripts de DataTables y Bootstrap al final del cuerpo del documento -->

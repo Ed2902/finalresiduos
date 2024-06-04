@@ -54,6 +54,27 @@ class Ingreso {
             return false; // Error
         }
     }
+    public function mostrarIngresos() {
+        $conexion = new Conexion();
+        $consulta = $conexion->query("SELECT * FROM ingreso");
+        $ingresos = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        $conexion = null;
+        return $ingresos;
+    }
+
+    public function mostrarDetalleIngreso($idIngreso) {
+        $conexion = new Conexion();
+        $consulta = $conexion->prepare("SELECT d.*, i.id_proveedorFK, i.valorPorKilo, p.nombre AS nombre_proveedor
+                                        FROM detalle_ingreso d
+                                        INNER JOIN inventario i ON d.id_inventarioFK = i.id_inventario
+                                        INNER JOIN proveedor p ON i.id_proveedorFK = p.id_proveedor
+                                        WHERE d.ingreso_id = :idIngreso");
+        $consulta->bindParam(':idIngreso', $idIngreso);
+        $consulta->execute();
+        $detalles = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        $conexion = null;
+        return $detalles;
+    }
 }
 
 ?>
