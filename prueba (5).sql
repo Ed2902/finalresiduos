@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-06-2024 a las 20:48:37
+-- Tiempo de generación: 04-06-2024 a las 22:23:55
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -44,7 +44,8 @@ INSERT INTO `detalle_ingreso` (`id`, `ingreso_id`, `id_inventarioFK`, `cantidad`
 (3, 5, 3, 1),
 (4, 6, 4, 1),
 (5, 7, 5, 1),
-(6, 8, 6, 32);
+(6, 8, 6, 32),
+(7, 9, 7, 350);
 
 -- --------------------------------------------------------
 
@@ -70,7 +71,8 @@ INSERT INTO `ingreso` (`id`, `suma_total_kilos`, `fecha_hora`) VALUES
 (5, 1, '2024-06-04 19:48:51'),
 (6, 1, '2024-06-04 19:52:59'),
 (7, 1, '2024-06-04 20:43:16'),
-(8, 32, '2024-06-04 20:47:53');
+(8, 32, '2024-06-04 20:47:53'),
+(9, 350, '2024-06-04 22:09:10');
 
 -- --------------------------------------------------------
 
@@ -97,7 +99,8 @@ INSERT INTO `inventario` (`id_inventario`, `id_productoFK`, `id_usuario`, `peso`
 (3, 2, 1, 1, '1', 1),
 (4, 2, 1, 1, '1', 1),
 (5, 2, 1, 1, '1', 1),
-(6, 2, 1, 32, '1', 32);
+(6, 2, 1, 32, '1', 32),
+(7, 2, 1, 350, '1', 65000);
 
 -- --------------------------------------------------------
 
@@ -230,19 +233,19 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `detalle_ingreso`
 --
 ALTER TABLE `detalle_ingreso`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `ingreso`
 --
 ALTER TABLE `ingreso`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-  MODIFY `id_inventario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_inventario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
