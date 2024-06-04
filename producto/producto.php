@@ -62,7 +62,7 @@
             $conexion = new Conexion();
             
             try {
-                $consulta = $conexion->prepare("INSERT INTO productos (id_producto, nombre, referencia, tipo, fecha, id_usuarioFK) VALUES(:id_producto, :nombre, :referencia, :tipo, NOW(), :id_usuarioFK)");
+                $consulta = $conexion->prepare("INSERT INTO producto (id_producto, nombre, referencia, tipo, fecha, id_usuarioFK) VALUES(:id_producto, :nombre, :referencia, :tipo, NOW(), :id_usuarioFK)");
                 
                 $consulta->bindParam(':id_producto', $this->id_producto);
                 $consulta->bindParam(':nombre', $this->nombre);
