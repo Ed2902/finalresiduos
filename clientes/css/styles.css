@@ -1,0 +1,68 @@
+/******************paleta de colores naraja #fe5000 , azul #679BD4 *********/
+
+/******************botones fomularios*********/
+
+
+.boton_agregar {
+    background-color: #fe5000; 
+    color: #fff; 
+}
+
+.boton_agregar:hover{
+
+    background-color: #679BD4;
+    color: #fff; 
+}
+
+.boton_cancelar {
+    background-color: #323030; 
+    color: #fff; 
+}
+
+.boton_enviar {
+    background-color: #679BD4; 
+    color: #080808; 
+}
+
+.btn-link i.fas {
+    color: #fe5000; 
+}
+
+/* tablas */
+
+
+/* Agrega estilos adicionales aquí si es necesario */
+#miTabla tbody td {
+    background-color: #f8f9fa; /* Gris claro */
+    color: #070707; /* Texto oscuro */
+    border-radius: 5px; /* Agrega bordes redondeados */
+  }
+
+  #miTabla thead th {
+    background-color: #679BD4; /* Azul */
+    color: white; /* Texto blanco */
+    border-radius: 1px; /* Agrega bordes redondeados */
+}
+
+/* lista */
+
+.sidebar-nav li:hover::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    z-index: 999;
+    display: none;
+  }
+
+  .sidebar-nav li:hover::before {
+    display: block;
+  }
+  
+  
