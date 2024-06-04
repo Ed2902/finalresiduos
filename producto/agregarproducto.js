@@ -16,10 +16,6 @@ document.getElementById('Producto').addEventListener('submit', function(event) {
         }
     });
 
-
-    //holaaaaa
-    
-
     // Validar que id_producto sea un número entero
     if (!/^\d+$/.test(idProductoInput.value.trim())) {
         isValid = false;
