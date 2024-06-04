@@ -1,5 +1,9 @@
 <?php
- require_once('../conexion.php');
+// Conexión a la base de datos
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "prueba";
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -10,7 +14,7 @@ if ($conn->connect_error) {
 }
 
 // Recuperar datos del formulario
-$nit = $_POST['id_cliente'];
+$id_proveedor = $_POST['id_proveedor'];
 $nombre = $_POST['nombre'];
 $representante_legal = $_POST['representantelegal'];
 $correo = $_POST['correo'];
@@ -52,11 +56,11 @@ move_uploaded_file($_FILES['visita']['tmp_name'], $visita);
 move_uploaded_file($_FILES['antecedentes']['tmp_name'], $antecedentes_judiciales);
 
 // Insertar datos en la base de datos
-$sql = "INSERT INTO cliente (id_cliente, nombre, representantelegal,correo, telefono, direccion, fecha_registro, camara_comercio, rut, cc_representante, certificacion_comercial, certificacion_bancaria, circular_170, acuerdos_seguridad, estados_financieros, autorizacion_tratamiento_datos, visita, antecedentes_judiciales) VALUES ('$nit', '$nombre', '$representante_legal', '$correo', '$telefono', '$direccion', '$fecha_registro', '$camara_comercio', '$rut', '$cc_representante', '$certificacion_comercial', '$certificacion_bancaria', '$circular_170', '$acuerdos_seguridad', '$estados_financieros', '$autorizacion_tratamiento_datos', '$visita', '$antecedentes_judiciales')";
+$sql = "INSERT INTO proveedor (id_proveedor, nombre, representantelegal,correo, telefono, direccion, fecha_registro, camara_comercio, rut, cc_representante, certificacion_comercial, certificacion_bancaria, circular_170, acuerdos_seguridad, estados_financieros, autorizacion_tratamiento_datos, visita, antecedentes_judiciales) VALUES ('$id_proveedor', '$nombre', '$representante_legal', '$correo', '$telefono', '$direccion', '$fecha_registro', '$camara_comercio', '$rut', '$cc_representante', '$certificacion_comercial', '$certificacion_bancaria', '$circular_170', '$acuerdos_seguridad', '$estados_financieros', '$autorizacion_tratamiento_datos', '$visita', '$antecedentes_judiciales')";
 
 if ($conn->query($sql) === TRUE) {
     // Redirigir a otra página después de insertar los datos
-    header('Location: ./tabla.php');
+    header('Location: ./crarcliente.html');
     exit(); // Asegurar que el script termina después de la redirección
 } else {
     echo "Error al insertar registro: " . $conn->error;
