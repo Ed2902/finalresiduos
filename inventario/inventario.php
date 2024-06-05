@@ -1,7 +1,17 @@
 <?php
 
-require_once("../conexion.php");
-require_once("./ingreso.php");
+// Verifica si los archivos existen antes de incluirlos
+$conexion_path = realpath(__DIR__ . "/../conexion.php");
+$ingreso_path = realpath(__DIR__ . "/../inventario/ingreso.php");
+
+
+
+if (file_exists($conexion_path) && file_exists($ingreso_path)) {
+    require_once($conexion_path);
+    require_once($ingreso_path);
+} else {
+    die("No se pudieron encontrar los archivos necesarios.");
+}
 
 class Inventario {
     protected $id_productoFK;
@@ -143,7 +153,7 @@ class Inventario {
 
     public function obtenerDatosDashboard() {
         $conexion = new Conexion();
-        $consulta = $conexion->query("SELECT p.id_producto, p.nombre AS nombre_producto, p.meta,
+        $consulta = $conexion->query("SELECT p.id_producto, p.nombre AS nombre_producto,
                                             SUM(inv.peso) AS peso_total_producto
                                       FROM producto p
                                       LEFT JOIN inventario inv ON p.id_producto = inv.id_productoFK
