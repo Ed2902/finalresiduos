@@ -29,10 +29,11 @@
             border-radius: 50%; /* Estilo de botón de casa */
         }
         .add-btn {
-            position: fixed; /* Posiciona el botón de agregar de forma fija */
-            bottom: 40%; /* Alinea abajo */
-            left: 90px; /* Alinea a la izquierda */
+            position: relative; /* Posiciona el botón de agregar de forma fija */
+            bottom: 30%; /* Alinea abajo */
+            left: 60px; /* Alinea a la izquierda */
             color: #fff; /* Color del texto del botón de agregar */
+            margin-left: 5px;
         }
         /* Estilo para el botón de Excel */
         .excel-btn {

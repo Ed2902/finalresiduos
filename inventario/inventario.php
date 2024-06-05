@@ -140,6 +140,25 @@ class Inventario {
             return ['total_cantidad' => 0, 'total_valor' => 0];
         }
     }
+
+    public function obtenerDatosDashboard() {
+        $conexion = new Conexion();
+        $consulta = $conexion->query("SELECT p.id_producto, p.nombre AS nombre_producto, p.meta,
+                                            SUM(inv.peso) AS peso_total_producto
+                                      FROM producto p
+                                      LEFT JOIN inventario inv ON p.id_producto = inv.id_productoFK
+                                      GROUP BY p.id_producto");
+    
+        $datos_dashboard = [];
+        if ($consulta->rowCount() > 0) {
+            while ($fila = $consulta->fetch(PDO::FETCH_ASSOC)) {
+                $datos_dashboard[] = $fila;
+            }
+        }
+    
+        return $datos_dashboard;
+    }
+    
     
 }
 ?>
