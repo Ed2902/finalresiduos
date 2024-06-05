@@ -97,7 +97,28 @@
                 return null;
             }
         }
+
+        public static function obtenerTodosLosProductos() {
+            $conexion = new Conexion();
+            $sql = "SELECT id_producto, nombre, referencia, tipo, fecha, id_usuarioFK FROM producto";
+            $consulta = $conexion->prepare($sql);
+            
+            try {
+                $consulta->execute();
+                $productos = $consulta->fetchAll(PDO::FETCH_ASSOC);
+                return $productos;
+            } catch (PDOException $e) {
+                echo "Error al obtener los productos: " . $e->getMessage();
+                return [];
+            }
+        }
+
+
+
     }
+
+
+
     ?>
 
 
