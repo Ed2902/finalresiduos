@@ -22,7 +22,6 @@ $colores = array(
 $metas = array(500, 100, 0, 0, 0, 0); // Aquí debes reemplazar los valores con las metas reales de cada producto
 
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -45,17 +44,57 @@ $metas = array(500, 100, 0, 0, 0, 0); // Aquí debes reemplazar los valores con 
         table#tablaConsolidadoProductos {
             width: 100% !important; /* Asegura que la tabla ocupe todo el ancho disponible */
         }
+
+        .total{
+            margin-bottom: 20px;
+            margin-top: 20px;
+            font-size: large;
+        }
+
+        .titulo{
+            text-align: center;
+            margin-bottom: 20px;
+            margin-top: 20px;
+       
+        }
+
+        .icon-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Alinea el contenido a la izquierda */
+            margin-bottom: 20px;
+        }
+
+        .btn-home {
+            background-color: transparent; /* Elimina el fondo del botón */
+            border: none; /* Elimina el borde del botón */
+        }
+
+        .btn-home:hover {
+            background-color: transparent; /* Mantener el fondo transparente al pasar el mouse */
+        }
+
+        .home-icon {
+            color: #fe5000; 
+            font-size: 24px;
+        }
+        
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Dashboard de Inventario</h1>
+        <div class="icon-container">
+            <a href="../Home/home.html" class="btn-home" style="text-decoration: none;">
+                <i class="fas fa-home home-icon"></i> <!-- Movido el icono aquí -->
+            </a>
+        </div>
+
+        <h1 class="titulo">Dashboard de Inventario</h1>
 
         <!-- Mostrar totales -->
         <div class="totales">
             <h2>Totales</h2>
-            <p>Total Cantidad: <?php echo number_format($totales['total_cantidad'], 2, ',', '.'); ?> kg</p>
-            <p>Total Valor: $<?php echo number_format($totales['total_valor'], 0, ',', '.'); ?></p>
+            <p class="total">Total Cantidad: <?php echo number_format($totales['total_cantidad'], 0, ',', '.'); ?> kg</p>  
         </div>
 
         <!-- Mostrar tabla consolidada -->
@@ -65,12 +104,12 @@ $metas = array(500, 100, 0, 0, 0, 0); // Aquí debes reemplazar los valores con 
                 <table id="tablaConsolidadoProductos" class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>ID Producto</th>
-                            <th>Nombre</th>
-                            <th>Referencia</th>
-                            <th>Tipo</th>
-                            <th>Total Cantidad</th>
-                            <th>Total Valor</th>
+                        <th class="text-center">ID Producto</th>
+                        <th class="text-center">Nombre</th>
+                        <th class="text-center">Referencia</th>
+                        <th class="text-center">Tipo</th>
+                        <th class="text-center">Total Kg</th>
+                        <th class="text-center">Valor pagado en Promedio por Kg</th>
                         </tr>
                     </thead>
                     <tbody>

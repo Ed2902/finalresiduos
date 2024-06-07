@@ -76,8 +76,8 @@
                         <th>Nombre Producto</th>
                         <th>Referencia</th>
                         <th>Tipo</th>
-                        <th>Total Cantidad en kilos</th>
-                        <th>Total Valor</th>
+                        <th>Total kilos</th>
+                        <th>Promedio Valor por kilo</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -86,7 +86,7 @@
                 <tfoot>
                     <tr>
                         <td colspan="4">Totales</td>
-                        <td><?php echo number_format($totales['total_cantidad'], 2, ',', '.'); ?></td>
+                        <td><?php echo number_format($totales['total_cantidad'], 0, ',', '.'); ?></td>
                         <td><?php echo '$' . number_format($totales['total_valor'], 0, ',', '.'); ?></td>
                     </tr>
                 </tfoot>
