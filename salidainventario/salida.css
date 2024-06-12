@@ -1,0 +1,113 @@
+.custom-file-input {
+    color: transparent;
+    height: auto;
+    cursor: pointer;
+}
+
+.custom-file-input:focus + .custom-file-label,
+.custom-file-input + .custom-file-label:hover {
+    background-color: #679BD4;
+}
+
+.custom-file-input:focus + .custom-file-label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.custom-file-input::before {
+    content: 'Seleccionar archivos';
+    display: inline-block;
+    background: #679BD4;
+    color: #fff;
+    border: 1px solid #fe5000;
+    border-radius: 5px;
+    padding: 6px 10px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.custom-file-input:hover::before {
+    border-color: #679BD4;
+}
+
+.custom-file-input:active::before {
+    background: #679BD4;
+}
+
+.custom-file-input:lang(es)::before {
+    content: 'Subir archivos';
+}
+
+label.subir {
+    font-weight: 500;
+}
+
+.input-group-text.text-success {
+    color: #28a745; /* Color verde de éxito */
+}
+
+#form-container {
+    margin-top: 50px;
+    border-radius: 20px;
+    padding: 20px;
+}
+/* Estilos para el reloj */
+#fechaHora {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    background: linear-gradient(to right, #fe5000 -10%, #679BD4 100%);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Estilos para los botones */
+.btn {
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+    background-color: #ff0000;
+    transform: scale(1.05);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* Estilos para los iconos */
+.input-group-text {
+    background: transparent;
+    border: none;
+}
+
+.custom-file-input::before {
+    content: 'Seleccionar archivo';
+    display: inline-block;
+    background: #679BD4;
+    color: #fff;
+    border: 1px solid #fe5000;
+    border-radius: 5px;
+    padding: 6px 10px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.custom-file-input:hover::before {
+    border-color: #679BD4;
+}
+
+.custom-file-input:active::before {
+    background: #679BD4;
+}
