@@ -47,14 +47,14 @@
                                 <input type="number" class="form-control" id="id_usuarioFK" name="id_usuarioFK" placeholder="Quién da el ingreso">
                             </div>
                             <div class="col-md-6">
-                                <label for="peso" class="form-label">Peso a Agregar</label>
-                                <input type="number" class="form-control" id="peso" name="peso" placeholder="Peso a Agregar">
+                                <label for="peso" class="form-label">Peso a Agregar (kg)</label>
+                                <input type="number" class="form-control" id="peso" name="peso" placeholder="Peso a Agregar (kg)">
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col-md-6">
-                                <label for="id_proveedorFK" class="form-label">Cliente</label>
-                                <input type="text" class="form-control" id="id_proveedorFK" name="id_proveedorFK" placeholder="Cliente">
+                                <label for="id_proveedorFK" class="form-label">Proveedor</label>
+                                <input type="text" class="form-control" id="id_proveedorFK" name="id_proveedorFK" placeholder="Proveedor">
                             </div>
                             <div class="col-md-6">
                                 <label for="valorPorKilo" class="form-label">Valor por Kilo</label>

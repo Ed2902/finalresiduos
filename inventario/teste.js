@@ -132,7 +132,7 @@ function save() {
             console.log('Datos enviados:', json);
             alert('Los datos han sido guardados exitosamente.');
             // Redireccionar al home
-            window.location.href = '../Home/home.html';
+            window.location.href = '../Home/home.php';
         } else {
             // Hubo un error en la solicitud
             console.error('Error al enviar datos al servidor. Código de estado:', xhr.status);
