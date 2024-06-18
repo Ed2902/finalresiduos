@@ -54,7 +54,7 @@
                 <li><a href="#"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Configuración</a></li>
               </ul>
             </li>
-            <li><a href="#"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></a></li>
+            <li><a href="../login/destruir.php"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Cerrar sesión</a></li>
           </ul>
         </div>
       </div>
