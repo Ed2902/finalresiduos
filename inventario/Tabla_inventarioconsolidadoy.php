@@ -1,4 +1,5 @@
 <?php
+    include_once "../login/verificar_sesion.php";
     // Incluir el archivo que contiene la definición de la clase Inventario
     require_once("./inventario.php");
 

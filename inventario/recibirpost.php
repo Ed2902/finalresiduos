@@ -1,5 +1,5 @@
 <?php
-
+include_once "../login/verificar_sesion.php";
 // Incluir las clases Inventario e Ingreso
 require_once("./inventario.php");
 require_once("./ingreso.php");

@@ -1,5 +1,5 @@
 <?php
-
+include_once "../login/verificar_sesion.php";
 require_once("./SalidaInventario.php"); // Ajusta la ruta a la clase SalidaInventario
 require_once("../conexion.php"); // Ajusta la ruta a la clase Conexion
 

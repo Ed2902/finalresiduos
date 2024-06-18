@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+    <div class="login-box">
+        <img src="../img/logo.png" alt="Fastway">
+        <h2>Ingreso</h2>
+        <form action="validar_login.php" method="post">
+            <div class="user-box">
+                <input type="text" name="usuario" required="">
+                <label>Usuario</label>
+            </div>
+            <div class="user-box">
+                <input type="password" name="contrasena" required="">
+                <label>Contraseña</label>
+            </div>
+            <button type="submit" class="btn">Ingresar</button>
+        </form>
+    </div>
+</body>
+</html>

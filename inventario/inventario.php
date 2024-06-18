@@ -1,5 +1,5 @@
 <?php
-
+include_once "../login/verificar_sesion.php";
 // Verifica si los archivos existen antes de incluirlos
 $conexion_path = realpath(__DIR__ . "/../conexion.php");
 $ingreso_path = realpath(__DIR__ . "/../inventario/ingreso.php");

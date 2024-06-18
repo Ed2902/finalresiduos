@@ -1,5 +1,5 @@
 <?php
-// Incluir el archivo que contiene la definición de la clase SalidaInventario
+include_once "../login/verificar_sesion.php";
 require_once("./SalidaInventario.php");
 
 // Crear una instancia de la clase SalidaInventario

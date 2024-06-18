@@ -1,5 +1,6 @@
 <?php
-require_once "../inventario/inventario.php"; // Ruta correcta del archivo Inventario.php
+include_once "../login/verificar_sesion.php"; 
+require_once "../inventario/inventario.php"; 
 
 // Crear una instancia de la clase Inventario
 $inventario = new Inventario(null, null, null, null, null);

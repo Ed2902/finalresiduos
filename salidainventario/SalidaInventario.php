@@ -1,5 +1,6 @@
 <?php
 
+include_once "../login/verificar_sesion.php";
 require_once("../conexion.php");
 
 class SalidaInventario {

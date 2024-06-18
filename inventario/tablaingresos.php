@@ -1,4 +1,5 @@
 <?php
+include_once "../login/verificar_sesion.php";
 // Crear una instancia de la clase Ingreso
 require_once("./ingreso.php");
 

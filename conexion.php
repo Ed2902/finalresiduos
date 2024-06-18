@@ -1,5 +1,5 @@
 <?php
-
+include_once "../login/verificar_sesion.php";
 class Conexion extends PDO{
     private $tipo_da_base = "mysql";
     private $host = "localhost";

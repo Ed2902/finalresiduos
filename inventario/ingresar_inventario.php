@@ -1,3 +1,5 @@
+<?php include_once "../login/verificar_sesion.php"; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
