@@ -1,61 +1,80 @@
-// Función para actualizar el campo de fecha y hora del sistema
-function actualizarFechaHora() {
-    const fechaHoraInput = document.getElementById('fechaHora');
-    const ahora = new Date();
-    const opciones = {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
+$(document).ready(function() {
+    // Configurar la fecha y hora
+    function actualizarFechaHora() {
+        const fechaHoraInput = document.getElementById('fechaHora');
+        const ahora = new Date();
+        const opciones = {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        };
+        const formateado = ahora.toLocaleString('es-ES', opciones);
+        fechaHoraInput.value = formateado.replace(', ', ' ');
+    }
+
+    // Actualizar la fecha y hora al cargar la página y cada segundo
+    window.onload = function() {
+        actualizarFechaHora();
+        setInterval(actualizarFechaHora, 1000);
     };
-    const formateado = ahora.toLocaleString('es-ES', opciones);
-    fechaHoraInput.value = formateado.replace(', ', ' ');
-}
 
-// Actualizar la fecha y hora al cargar la página y cada segundo
-window.onload = function() {
-    actualizarFechaHora();
-    setInterval(actualizarFechaHora, 1000);
-};
+    // Manejar la apertura del modal y la obtención de kilos
+    $('#openModalBtn').on('click', function(event) {
+        event.preventDefault();
+        $.ajax({
+            url: './obtener_total_kilos.php',
+            method: 'GET',
+            success: function(response) {
+                console.log('Respuesta exitosa de obtener_total_kilos.php:', response);
+                $('#modalBody').html('¿Desea sacar ' + response + ' kilos del inventario?');
+                $('#confirmationModal').modal('show');
+            },
+            error: function(xhr, status, error) {
+                console.log('Error al obtener el total de kilos:', error);
+                $('#modalBody').html('Error al obtener el total de kilos.');
+                $('#confirmationModal').modal('show');
+            }
+        });
+    });
 
-// Función para cambiar el color del icono cuando se seleccionan archivos
-function cambioColorIcono(inputId, iconoId) {
-    const inputFile = document.getElementById(inputId);
-    const icono = document.getElementById(iconoId);
+    // Confirmar la salida
+    $('#confirmSalidaBtn').on('click', function() {
+        const idSalida = $('#idSalida').val(); // Obtener idSalida desde donde corresponda
+        $('#idSalida').val(idSalida);
+        
+        // Enviar el formulario
+        $('#form-container').submit();
+    });
 
-    inputFile.addEventListener('change', function() {
-        if (inputFile.files.length > 0) {
-            icono.style.color = '#28a745';
-        } else {
-            icono.style.color = '';
+    // Validar el formulario antes de enviar
+    $('#form-container').on('submit', function(event) {
+        const evidenciasInput = document.getElementById('evidencias');
+        const documentacionInput = document.getElementById('documentacion');
+
+        if (evidenciasInput.files.length === 0 || documentacionInput.files.length === 0) {
+            alert('Por favor, suba todos los archivos requeridos.');
+            event.preventDefault();  // Evitar que el formulario se envíe si los archivos no están adjuntos
         }
     });
-}
 
-// Llama a la función para cada input de tipo file
-cambioColorIcono('evidencias', 'evidenciasLabel');
-cambioColorIcono('documentacion', 'documentacionLabel');
+    // Función para cambiar el color del icono cuando se seleccionan archivos
+    function cambioColorIcono(inputId, iconoId) {
+        const inputFile = document.getElementById(inputId);
+        const icono = document.getElementById(iconoId);
 
-// Función para limpiar el formulario
-function limpiarFormulario() {
-    document.getElementById('form-container').reset();
-    document.getElementById('evidenciasLabel').style.color = '';
-    document.getElementById('documentacionLabel').style.color = '';
-    actualizarFechaHora();
-}
-
-// Función para validar el formulario antes de enviar
-function validarFormulario(event) {
-    const evidenciasInput = document.getElementById('evidencias');
-    const documentacionInput = document.getElementById('documentacion');
-
-    if (evidenciasInput.files.length === 0 || documentacionInput.files.length === 0) {
-        alert('Por favor, suba todos los archivos requeridos.');
-        event.preventDefault();  // Evitar que el formulario se envíe
+        inputFile.addEventListener('change', function() {
+            if (inputFile.files.length > 0) {
+                icono.style.color = '#28a745';
+            } else {
+                icono.style.color = '';
+            }
+        });
     }
-}
 
-// Asociar la función de validación al evento de envío del formulario
-document.getElementById('form-container').addEventListener('submit', validarFormulario);
+    // Llama a la función para cada input de tipo file
+    cambioColorIcono('evidencias', 'evidenciasLabel');
+    cambioColorIcono('documentacion', 'documentacionLabel');
+});

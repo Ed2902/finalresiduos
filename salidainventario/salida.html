@@ -12,9 +12,13 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-9">
-                <form id="form-container" class="text-center border border-light p-3 shadow-lg rounded-lg" style="border-radius: 18px; margin-top: 18px;" enctype="multipart/form-data">
+                <form id="form-container" class="text-center border border-light p-3 shadow-lg rounded-lg" style="border-radius: 18px; margin-top: 18px;" enctype="multipart/form-data" method="POST" action="./realizar_salida.php">
                     <p class="h2 mb-4">Salida de inventario</p>
-
+                
+                    <!-- Campo oculto para el ID de salida -->
+                    <input type="hidden" id="idSalida" name="idSalida" value="">
+                
+                    <!-- Resto de los campos del formulario -->
                     <div class="row mb-4 justify-content-center">
                         <div class="col-md-6">
                             <label for="evidencias" class="form-label subir">Evidencias</label>
@@ -24,7 +28,7 @@
                             </div>
                         </div>
                     </div>
-
+                
                     <div class="row mb-4 justify-content-center">
                         <div class="col-md-6">
                             <label for="documentacion" class="form-label subir">Documentación</label>
@@ -34,17 +38,35 @@
                             </div>
                         </div>
                     </div>
-
+                
                     <div class="row mb-4 justify-content-center">
                         <div class="col-md-6">
                             <label for="fechaHora" class="form-label">Fecha y Hora del Sistema</label>
                             <input type="text" class="form-control" id="fechaHora" name="fechaHora" readonly>
                         </div>
                     </div>
-
-                    <button type="submit" class="btn btn-info btn-lg">Dar salida</button>
-                    
+                
+                    <button type="button" class="btn btn-info btn-lg" id="openModalBtn">Dar salida</button>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModalLabel">Confirmación de Salida</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <!-- Aquí va la información que quieres mostrar -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="confirmSalidaBtn">Confirmar</button>
+                </div>
             </div>
         </div>
     </div>

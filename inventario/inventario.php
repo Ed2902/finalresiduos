@@ -274,6 +274,19 @@ class Inventario {
         }
     }
     
+    public function obtenerTotalKilos() {
+        $conexion = new Conexion();
+        $consulta = $conexion->query("SELECT SUM(peso) AS total_kilos FROM inventario");
+    
+        if ($consulta) {
+            $resultado = $consulta->fetch(PDO::FETCH_ASSOC);
+            $conexion = null;
+            return $resultado['total_kilos'];
+        } else {
+            $conexion = null;
+            return 0; // O cualquier valor predeterminado si no hay datos
+        }
+    }
     
 }
 ?>
