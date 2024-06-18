@@ -1,4 +1,5 @@
 <?php
+include_once "../login/verificar_sesion.php";
 // Conexión a la base de datos
 $servername = "localhost";
 $username = "root";
@@ -60,7 +61,7 @@ $sql = "INSERT INTO proveedor (id_proveedor, nombre, representantelegal,correo, 
 
 if ($conn->query($sql) === TRUE) {
     // Redirigir a otra página después de insertar los datos
-    header('Location: ./crarcliente.html');
+    header('Location: ./crearclientee.php');
     exit(); // Asegurar que el script termina después de la redirección
 } else {
     echo "Error al insertar registro: " . $conn->error;

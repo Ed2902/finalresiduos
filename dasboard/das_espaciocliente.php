@@ -86,7 +86,7 @@ $metas = array(500, 100, 0, 0, 0, 0); // Aquí debes reemplazar los valores con 
 <body>
     <div class="container">
         <div class="icon-container">
-            <a href="../Home/home.html" class="btn-home" style="text-decoration: none;">
+            <a href="../Home/home.php" class="btn-home" style="text-decoration: none;">
                 <i class="fas fa-home home-icon"></i> <!-- Movido el icono aquí -->
             </a>
         </div>

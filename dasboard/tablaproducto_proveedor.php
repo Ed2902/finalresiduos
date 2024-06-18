@@ -98,7 +98,7 @@ $nombres_proveedores = $inventario->obtenerNombresProveedores();
 <body>
     <div class="container">
         <!-- Botón de Casa -->
-        <a href="../Home/home.html" style="text-decoration: none;">
+        <a href="../Home/home.php" style="text-decoration: none;">
             <button type="button" class="btn btn-light mr-2" style="border-radius: 50%;">
                 <i class="fas fa-home home-icon"></i>
             </button>

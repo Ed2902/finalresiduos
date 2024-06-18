@@ -48,7 +48,7 @@ $salidas = $salidaInventario->consultarSalidas();
 <body>
     <div class="container-fluid" style="width: 90%;">
         <!-- Botón de Casa -->
-        <a href="../Home/home.html" style="text-decoration: none;">
+        <a href="../Home/home.php" style="text-decoration: none;">
             <button type="button" class="btn btn-light mr-2" style="border-radius: 50%;">
                 <i class="fas fa-home" style="font-size: 20px; color:#fe5000;"></i>
             </button>
@@ -94,7 +94,7 @@ $salidas = $salidaInventario->consultarSalidas();
             </table>
         </div>
         <!-- Botón de Agregar -->
-        <a href="./salida.html" class="mt-3 btn btn-danger"><i class="fas fa-plus"></i> Sacar inventario</a>
+        <a href="./salida.php" class="mt-3 btn btn-danger"><i class="fas fa-plus"></i> Sacar inventario</a>
     </div>
 
     <!-- Agregar scripts de DataTables y Bootstrap al final del cuerpo del documento -->

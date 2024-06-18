@@ -1,6 +1,6 @@
 <?php
 include_once "../login/verificar_sesion.php";
-// Crear una instancia de la clase Ingreso
+// Crear una instancia de la clase Ingreso pendiente en sistema
 require_once("./ingreso.php");
 
 $ingreso = new Ingreso($suma_total_kilos, $fecha_hora = null);

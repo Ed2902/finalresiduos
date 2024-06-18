@@ -38,7 +38,7 @@
 <body>
     <div class="container-fluid" style="width: 90%;">
         <!-- Botón de Casa -->
-        <a href="../Home/home.html" style="text-decoration: none;">
+        <a href="../Home/home.php" style="text-decoration: none;">
             <button type="button" class="btn btn-light mr-2" style="border-radius: 50%;">
                 <i class="fas fa-home" style="font-size: 20px; color:#fe5000;"></i>
             </button>
@@ -124,7 +124,7 @@
             </table>
         </div>
         <!-- Botón de Agregar -->
-        <a href="./crearcliente.html" style="text-decoration: none;">
+        <a href="./crearclientee.php" style="text-decoration: none;">
             <button type="button" class="btn btn-success mt-3">
                 <i class="fas fa-plus"></i> Agregar
             </button>

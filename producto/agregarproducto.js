@@ -49,7 +49,7 @@ document.getElementById('Producto').addEventListener('submit', function(event) {
             alert('Los datos fueron guardados correctamente.');
             // Redirigir a index.html después de 1 segundo
             setTimeout(() => {
-                window.location.href = '../Home/home.html';
+                window.location.href = '../Home/home.php';
             }, 500);
         })
         .catch(error => {

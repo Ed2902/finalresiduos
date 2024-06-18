@@ -69,7 +69,7 @@
 <body>
     <div class="container-fluid" style="width: 90%;">
         <!-- Botón de Casa -->
-        <a href="../Home/home.html" style="text-decoration: none;">
+        <a href="../Home/home.php" style="text-decoration: none;">
             <button type="button" class="btn btn-light home-btn">
                 <i class="fas fa-home" style="font-size: 20px; color:#fe5000;"></i>
             </button>

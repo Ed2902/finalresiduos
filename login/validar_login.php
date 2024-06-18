@@ -1,5 +1,5 @@
 <?php
-include_once "../login/verificar_sesion.php";
+
 // Verificar si se han enviado los datos del formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Conexión a la base de datos (aquí debes agregar tus propias credenciales)
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Inicio de sesión exitoso
         session_start();
         $_SESSION["usuario"] = $usuario; // Guardar el nombre de usuario en la sesión
-        header("Location: ../home/home.html"); // Redirigir al usuario a la página de inicio
+        header("Location: ../home/home.php"); // Redirigir al usuario a la página de inicio
         exit();
     } else {
         // Usuario o contraseña incorrectos
