@@ -70,7 +70,7 @@
                     $servername = "localhost";
                     $username = "root";
                     $password = "";
-                    $dbname = "inventariofast";
+                    $dbname = "prueba";
 
                     // Crear conexión
                     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -81,7 +81,7 @@
                     }
 
                     // Consultar la base de datos
-                    $sql = "SELECT id_cliente, nombre, representantelegal, correo, telefono, direccion, fecha_registro FROM cliente";
+                    $sql = "SELECT id_proveedor, nombre, representantelegal, correo, telefono, direccion, fecha_registro FROM proveedor";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {

@@ -62,9 +62,9 @@
     <div id="bootstrap-sidebar" class="dark-theme icon-menu">
       <ul class="sidebar-nav">
         <li class="active" data-tooltip="Inicio"> <a href="../index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> <span class="menu-text">Inicio</span></a></li>
-        <li data-tooltip="Consulta Categoría"> <a href="../Tablas/TESTECONS.php"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> <span class="menu-text">Consulta Categoría</span></a></li>
-        <li data-tooltip="Reportes"> <a href="/Tablas/CompraMostrar.php"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> <span class="menu-text">Reportes</span></a></li>
-        <li data-tooltip="Catálogo"> <a href="#"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> <span class="menu-text">Catálogo</span></a></li>
+        <li data-tooltip="Consulta Categoría"> <a href="../dasboard/das_espaciocliente.php"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> <span class="menu-text">Consulta Categoría</span></a></li>
+        <!-- <li data-tooltip="Reportes"> <a href="/Tablas/CompraMostrar.php"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> <span class="menu-text">Reportes</span></a></li>
+        <li data-tooltip="Catálogo"> <a href="#"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> <span class="menu-text">Catálogo</span></a></li> -->
         <!-- <li data-tooltip="Bandeja de entrada"> <a href="#"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> <span class="menu-text">Bandeja de entrada</span></a></li>
         <li data-tooltip="Favoritos"> <a href="#"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <span class="menu-text">Favoritos</span></a></li>
         <li data-tooltip="Activos"> <a href="#"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> <span class="menu-text">Activos</span></a></li>
@@ -86,7 +86,7 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="panel panel-default">
-              <div class="panel-heading">Sistema de Inventario</div>
+              <div class="panel-heading">Sistema de Inventario residuos industriales 1.0</div>
               <div class="panel-body" id="feature-content">
                 <div class="col-md-3">
                   <div class="panel panel-primary">
@@ -98,7 +98,7 @@
                 </div>
                 <div class="col-md-3">
                   <div class="panel panel-primary">
-                    <div class="panel-body text-center" onclick="location.href='../formularios/Orden_salida.html'" data-tooltip="Crear Orden de Salida">
+                    <div class="panel-body text-center" onclick="location.href='../salidainventario/tabla_salida.php'" data-tooltip="Crear Orden de Salida">
                       <span class="glyphicon glyphicon-export icon-big" aria-hidden="true"></span>
                       <h3>Orden de Salida</h3>
                     </div>
@@ -108,23 +108,23 @@
                   <div class="panel panel-primary">
                     <div class="panel-body text-center" onclick="location.href='../dasboard/das_espaciocliente.php'" data-tooltip="Ver Ocupación de la Bodega">
                       <span class="glyphicon glyphicon-stats icon-big" aria-hidden="true"></span>
-                      <h3> Ocupación de Bodega</h3>
+                      <h3>Metas y balance</h3>
                     </div>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="panel panel-primary">
-                    <div class="panel-body text-center" onclick="location.href='../Tablas/Consultarfactura.php'" data-tooltip="Histórico de Movimientos">
+                    <div class="panel-body text-center" onclick="location.href='../dasboard/tablaproducto_proveedor.php'" data-tooltip="Histórico de Movimientos">
                       <span class="glyphicon glyphicon-book icon-big" aria-hidden="true"></span>
-                      <h3>Histórico de Movimientos</h3>
+                      <h3>Balance Proveedor</h3>
                     </div>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="panel panel-primary">
-                    <div class="panel-body text-center" onclick="location.href='../Tablas/Tabla_inventariogeneral.php'" data-tooltip="Inventario General">
+                    <div class="panel-body text-center" onclick="location.href='../clientes/tabla.php'" data-tooltip="Inventario General">
                       <span class="glyphicon glyphicon-plus icon-big" aria-hidden="true"></span>
-                      <h3>Inventario General</h3>
+                      <h3>Proveedores</h3>
                     </div>
                   </div>
                 </div>
@@ -136,7 +136,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-3">
+                <!-- <div class="col-md-3">
                   <div class="panel panel-primary">
                     <div class="panel-body text-center" onclick="location.href='../Tablas/editar_inventario.html'" data-tooltip="Editar Inventario">
                       <span class="glyphicon glyphicon-book icon-big" aria-hidden="true"></span>
@@ -151,7 +151,7 @@
                       <h3>Mis clientes</h3>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>

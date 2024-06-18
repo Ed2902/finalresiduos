@@ -94,7 +94,7 @@ $salidas = $salidaInventario->consultarSalidas();
             </table>
         </div>
         <!-- Botón de Agregar -->
-        <a href="./ingresar_inventario.php" class="btn btn-success mt-3"><i class="fas fa-plus"></i> Agregar</a>
+        <a href="./salida.html" class="mt-3 btn btn-danger"><i class="fas fa-plus"></i> Sacar inventario</a>
     </div>
 
     <!-- Agregar scripts de DataTables y Bootstrap al final del cuerpo del documento -->
