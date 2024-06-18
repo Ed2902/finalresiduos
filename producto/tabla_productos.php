@@ -112,7 +112,7 @@
             </table>
         </div>
         <!-- Botón de Agregar -->
-        <a href="./producto.html" class="btn btn-success add-btn"><i class="fas fa-plus"></i> Agregar</a>
+        <a href="./productof.php" class="btn btn-success add-btn"><i class="fas fa-plus"></i> Agregar</a>
     </div>
 
     <!-- Agregar scripts de jQuery, DataTables y sus extensiones -->
