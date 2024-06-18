@@ -1,4 +1,3 @@
-
 var boton = document.getElementById('agregar');
 var guardar = document.getElementById('guardar');
 var lista = document.getElementById('lista');
@@ -8,6 +7,11 @@ var cant = 0;
 // Eventos para botones
 boton.addEventListener("click", agregar);
 guardar.addEventListener("click", save);
+
+// Deshabilitar edición de campos nombre, referencia y tipo
+document.getElementById('nombre').disabled = true;
+document.getElementById('referencia').disabled = true;
+document.getElementById('tipo').disabled = true;
 
 // Función para agregar productos al array y a la tabla visual
 function agregar() {
@@ -19,6 +23,12 @@ function agregar() {
     var peso = document.getElementById('peso').value;
     var id_proveedorFK = document.getElementById('id_proveedorFK').value;
     var valorPorKilo = document.getElementById('valorPorKilo').value;
+
+    // Validar campos obligatorios
+    if (id_productoFK === '' || id_usuarioFK === '' || peso === '' || id_proveedorFK === '' || valorPorKilo === '') {
+        alert('Todos los campos son obligatorios.');
+        return;
+    }
 
     // Agregar elementos al array data
     data.push({
@@ -78,10 +88,6 @@ function cantidad(index) {
         $("#nombre").val(item.nombre);
         $("#referencia").val(item.referencia);
         $("#tipo").val(item.tipo);
-        $("#id_usuarioFK").val(item.id_usuarioFK);
-        $("#peso").val(item.peso);
-        $("#id_proveedorFK").val(item.id_proveedorFK);
-        $("#valorPorKilo").val(item.valorPorKilo);
 
         // Eliminar fila visual y del array
         $("#row" + index).remove();
@@ -106,7 +112,6 @@ function prepararDatosParaEnvio(data) {
     });
 }
 
-
 // Función para enviar los datos al servidor
 function save() {
     var dataToSend = prepararDatosParaEnvio(data);
@@ -125,6 +130,9 @@ function save() {
             // La solicitud fue exitosa
             console.log('Respuesta del servidor:', xhr.responseText);
             console.log('Datos enviados:', json);
+            alert('Los datos han sido guardados exitosamente.');
+            // Redireccionar al home
+            window.location.href = '../Home/home.html';
         } else {
             // Hubo un error en la solicitud
             console.error('Error al enviar datos al servidor. Código de estado:', xhr.status);
@@ -140,4 +148,3 @@ function save() {
     // Enviar la solicitud con los datos JSON
     xhr.send(json);
 }
-
