@@ -21,7 +21,7 @@ $colores = array(
 );
 
 // Metas de cada producto
-$metas = array(400, 0, 0, 0, 0, 0); // Aquí debes reemplazar los valores con las metas reales de cada producto
+$metas = array(0, 0, 0, 0, 0, 0); // Aquí debes reemplazar los valores con las metas reales de cada producto
 
 ?>
 <!DOCTYPE html>
