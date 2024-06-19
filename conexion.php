@@ -3,9 +3,9 @@ include_once "../login/verificar_sesion.php";
 class Conexion extends PDO{
     private $tipo_da_base = "mysql";
     private $host = "localhost";
-    private $nombre_de_base = "prueba";
-    private $usuario = "root";
-    private $contrasena = "";
+    private $nombre_de_base = "fastways_appfastway";
+    private $usuario = "fastways_Programador";
+    private $contrasena = "Jsqpmlqpors2902";
     public function __construct()
     {
         try {

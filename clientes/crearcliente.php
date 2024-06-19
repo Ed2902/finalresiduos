@@ -2,9 +2,9 @@
 include_once "../login/verificar_sesion.php";
 // Conexión a la base de datos
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "prueba";
+$username = "fastways_Programador";
+$password = "Jsqpmlqpors2902";
+$dbname = "fastways_appfastway";
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);

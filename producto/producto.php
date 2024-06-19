@@ -84,7 +84,7 @@
     
         public static function obtenerProductoPorId($idProducto) {
             $conexion = new Conexion();
-            $sql = "SELECT * FROM prueba.producto WHERE id_producto = :id";
+            $sql = "SELECT * FROM fastways_appfastway.producto WHERE id_producto = :id";
             $consulta = $conexion->prepare($sql);
             
             try {
