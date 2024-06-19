@@ -67,14 +67,15 @@
                 </thead>
                 <tbody>
                     <?php
-                    $servername = "localhost";
+                    $servername = "host3.latinoamericahosting.com";
                     $username = "fastways_Programador";
                     $password = "Jsqpmlqpors2902";
                     $dbname = "fastways_appfastway";
-
+                    $port = 3306; 
+                    
                     // Crear conexión
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-
+                    $conn = new mysqli($servername, $username, $password, $dbname, $port);
+                    
                     // Verificar la conexión
                     if ($conn->connect_error) {
                         die("La conexión falló: " . $conn->connect_error);

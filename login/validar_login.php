@@ -3,19 +3,19 @@
 // Verificar si se han enviado los datos del formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Conexión a la base de datos (aquí debes agregar tus propias credenciales)
-    $servername = "localhost";
+    $servername = "host3.latinoamericahosting.com";
     $username = "fastways_Programador";
     $password = "Jsqpmlqpors2902";
     $dbname = "fastways_appfastway";
+    $port = 3306; 
 
-    // Crear conexión
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Verificar la conexión
-    if ($conn->connect_error) {
-        die("Conexión fallida: " . $conn->connect_error);
-    }
-
+     // Crear conexión
+     $conn = new mysqli($servername, $username, $password, $dbname, $port);
+                    
+     // Verificar la conexión
+     if ($conn->connect_error) {
+         die("La conexión falló: " . $conn->connect_error);
+     }
     // Obtener los datos del formulario
     $usuario = $_POST["usuario"];
     $contrasena = $_POST["contrasena"];
