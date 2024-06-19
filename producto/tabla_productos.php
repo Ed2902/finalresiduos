@@ -91,7 +91,7 @@
                 <tbody>
                     <?php
                         require_once '../conexion.php';
-                        require_once './Producto.php';
+                        require_once './producto.php';
 
                         // Obtener todos los productos
                         $productos = Producto::obtenerTodosLosProductos();
