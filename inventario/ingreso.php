@@ -75,6 +75,23 @@ class Ingreso {
         $conexion = null;
         return $detalles;
     }
-}
 
+    public static function obtenerProveedores() {
+        $conexion = new Conexion();
+        $consulta = $conexion->query("SELECT id_proveedor, nombre FROM proveedor");
+        $proveedores = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        $conexion = null;
+        return $proveedores;
+    }
+
+    public static function buscarProductos($termino) {
+        $conexion = new Conexion();
+        $stmt = $conexion->prepare("SELECT id_producto, nombre, referencia, tipo FROM producto WHERE nombre LIKE ? OR referencia LIKE ?");
+        $stmt->execute(['%'.$termino.'%', '%'.$termino.'%']);
+        $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $conexion = null;
+        return $productos;
+    }
+}
 ?>
+

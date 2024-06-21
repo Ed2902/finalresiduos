@@ -68,8 +68,8 @@
                 <tbody>
                     <?php
                     $servername = "localhost";
-                    $username = "fastways_Programador";
-                    $password = "Jsqpmlqpors2902";
+                    $username = "root";
+                    $password = "";
                     $dbname = "fastways_appfastway";
 
                     // Crear conexión
