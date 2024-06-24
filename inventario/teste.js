@@ -25,7 +25,7 @@ function agregar() {
     var valorPorKilo = document.getElementById('valorPorKilo').value;
 
     // Validar campos obligatorios
-    if (id_productoFK === '' || id_usuarioFK === '' || peso === '' || id_proveedorFK === '' || valorPorKilo === '') {
+    if (id_productoFK === '' || id_usuarioFK === '' || peso === '' || id_proveedorFK === '' || valorPorKilo === '' || nombre === '' || referencia === '' || tipo === '') {
         alert('Todos los campos son obligatorios.');
         return;
     }
